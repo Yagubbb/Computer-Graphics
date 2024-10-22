@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate System in Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="coordinateCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('coordinateCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw the axes
+        function drawAxes() {
+            ctx.beginPath();
+            ctx.moveTo(200, 0); // Y-axis
+            ctx.lineTo(200, 400);
+            ctx.moveTo(0, 200); // X-axis
+            ctx.lineTo(400, 200);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // Draw points and labels at intervals of 20
+        function drawPoint(x, y, label) {
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.arc(x + 200, 200 - y, 5, 0, Math.PI * 2); // Invert Y-axis for canvas
+            ctx.fill();
+
+            ctx.fillStyle = 'black';
+            ctx.fillText(label, x + 205, 200 - y);
+        }
+
+        // Draw everything
+        drawAxes();
+        
+       
+    </script>
+</body>
+</html>
+    
